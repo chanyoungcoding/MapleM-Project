@@ -19,7 +19,7 @@ const MapleSearch = () => {
   }
 
   return (
-    <div className="relative flex items-center justify-center py-20 z-20">
+    <div className="relative flex items-center justify-center py-40 z-20">
       <Image src="/maplepet.png" alt="title" priority width={75} height={75} layout="fixed"/>
       <input 
         type="text" 
