@@ -16,6 +16,10 @@ const config: Config = {
       height: {
         '300': '300px',
       },
+      colors: {
+        "main": "#292525",
+        "maple-green": "00B507"
+      }
     },
   },
   plugins: [],
