@@ -9,7 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        'main-image': "url('/background_2.png')"
+        'main-image': "url('/background_2.png')",
+        "detail-image": "url('/background_1.png')",
+        "character-background-image": "url('/background_3.png')"
       },
       height: {
         '300': '300px',
@@ -18,6 +20,8 @@ const config: Config = {
         "maple-green": "#00B507",
         "maple-dark": "#292525",
         "maple-gray": "#D9D9D9",
+        "maple-darkblue": "#2A303E",
+        "maple-lightblue": "#6587E0",
       }
     },
   },
