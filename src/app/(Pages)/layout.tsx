@@ -1,4 +1,4 @@
-import Image from "next/image"
+import MapleNavbar from "../_components/maple-navbar"
 
 interface Layout {
   children: React.ReactNode
@@ -7,10 +7,7 @@ interface Layout {
 const layout:React.FC<Layout> = ({children}) => {
   return (
     <>
-    <div className="flex items-center bg-maple-dark p-[10px] shadow-custom">
-      <Image src="/maplepet.png" alt="title" priority width={75} height={75} layout="fixed"/>
-      <p className="pl-4 text-white font-bold text-2xl">MapleM</p>
-    </div>
+    <MapleNavbar/>
     {children}
     </>
   )

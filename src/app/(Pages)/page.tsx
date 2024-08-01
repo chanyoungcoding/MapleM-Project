@@ -22,9 +22,9 @@ export default function Home() {
             <MapleButton>진행 중인 이벤트</MapleButton>
           </div>
 
-          <div className="bg-[#F0F3F5] h-10"></div>
+          <div className="bg-[#F0F3F5] h-5"></div>
 
-          <div className="py-6">
+          <div className="pb-6">
             <MapleNoticeDetail/>
             <MapleNoticeDetail/>
             <MapleNoticeDetail/>

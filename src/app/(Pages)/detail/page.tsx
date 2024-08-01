@@ -6,7 +6,7 @@ import Image from "next/image"
 const page = () => {
   return (
     <div>
-      <div className="bg-detail-image bg-cover bg-center py-[80px]">
+      <div className="bg-detail-image bg-cover bg-center py-[140px]">
         <div className="relative w-[450px] m-auto bg-character-background-image bg-cover bg-center rounded-xl shadow-custom">
           <div className="absolute inset-0 bg-black opacity-60 rounded-xl"></div>
           
