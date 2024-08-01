@@ -1,9 +1,18 @@
+"use client"
+import Image from "next/image"
+
 import MapleAbility from "@/app/_components/maple-ability"
 import MapleSimpleAbility from "@/app/_components/maple-simple-ability"
 import MapleVMatrix from "@/app/_components/maple-vmetrix"
-import Image from "next/image"
+import { useEffect } from "react"
 
 const page = () => {
+
+  useEffect(() => {
+    const userId = sessionStorage.getItem("ocid");
+    console.log(userId)
+  },[])
+
   return (
     <div>
       <div className="bg-detail-image bg-cover bg-center py-[140px]">

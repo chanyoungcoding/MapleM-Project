@@ -1,3 +1,4 @@
+
 import MapleSearch from "../_components/maple-search";
 import MapleButton from "../_components/maple-button";
 import MapleNoticeDetail from "../_components/maple-noticeDetails";
