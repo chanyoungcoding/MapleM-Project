@@ -11,7 +11,8 @@ const config: Config = {
       backgroundImage: {
         'main-image': "url('/background_2.png')",
         "detail-image": "url('/background_1.png')",
-        "character-background-image": "url('/background_3.png')"
+        "character-background-image": "url('/background_3.png')",
+        "ability-background-image": "url('/background_5.png')"
       },
       height: {
         '300': '300px',
@@ -24,7 +25,10 @@ const config: Config = {
         "maple-lightblue": "#6587E0",
         "maple-purple": "#6D62A1",
         "maple-sky": "#5393CA"
-      }
+      },
+      boxShadow: {
+        'custom': 'rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;',
+      },
     },
   },
   plugins: [],

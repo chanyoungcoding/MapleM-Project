@@ -11,8 +11,8 @@ export default function Home() {
         <MapleSearch/>
       </div>
 
-      <div className="bg-maple-gray relative rounded-2xl top-[-100px] m-8 p-5">
-        <div className="bg-white rounded-2xl">
+      <div className="bg-maple-gray relative rounded-2xl top-[-100px] m-8 p-5 shadow-custom">
+        <div className="bg-white rounded-2xl shadow-custom">
 
           <p className="pb-6 border-b-2 border-gray-300 p-6">공지 정보</p>
 

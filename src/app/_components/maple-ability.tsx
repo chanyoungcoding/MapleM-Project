@@ -2,7 +2,7 @@
 const MapleAbility = () => {
 
   return (
-    <div className="w-[300px] p-5 border-2 border-maple-sky rounded-lg">
+    <div className="relative w-[300px] bg-white p-5 border-4 border-maple-sky rounded-lg z-50">
       <h1 className=" pb-5 font-bold text-xl text-maple-sky">스탯</h1>
       
       <div className="flex items-center justify-between">
