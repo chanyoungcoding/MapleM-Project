@@ -1,3 +1,5 @@
+import MapleAbility from "@/app/_components/maple-ability"
+import MapleSimpleAbility from "@/app/_components/maple-simple-ability"
 import Image from "next/image"
 
 const page = () => {
@@ -12,22 +14,16 @@ const page = () => {
             <Image src="/maple-character.png" alt="캐릭터 이미지" priority width={150} height={150} layout="fixed"/>
             <p className="text-white">Lv. 181</p>
 
-            <div className="m-5">
-              <div className="flex items-center border-[1px] border-black">
-                <p className="grow px-5 py-2 bg-maple-darkblue text-maple-lightblue">직업</p>
-                <p className="px-5 py-2 w-[150px] bg-white text-black">다크나이트</p>
-              </div>
-              <div className="flex items-center border-[1px] border-t-0 border-black">
-                <p className="grow px-5 py-2 bg-maple-darkblue text-maple-lightblue">전투력</p>
-                <p className="px-5 py-2 w-[150px] bg-white text-black">183852</p>
-              </div>
-            </div>
+            <MapleSimpleAbility work="다크나이트" ability="323232"/>
 
             <p className="m-6 text-maple-gray">마지막 활동일: 07-05</p>
           </div>
         </div>
       </div>
 
+      <div>
+        <MapleAbility/>
+      </div>
 
     </div>
   )

@@ -22,6 +22,8 @@ const config: Config = {
         "maple-gray": "#D9D9D9",
         "maple-darkblue": "#2A303E",
         "maple-lightblue": "#6587E0",
+        "maple-purple": "#6D62A1",
+        "maple-sky": "#5393CA"
       }
     },
   },
