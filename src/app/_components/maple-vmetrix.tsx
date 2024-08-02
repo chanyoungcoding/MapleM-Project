@@ -33,12 +33,14 @@ const MapleVMatrix:React.FC<MapleVMatrixData> = ({VMetrix}) => {
 
       <div>
         {VMetrix?.character_v_core_equipment.map((item,index) => (
-          <div key={index} className='group relative flex items-center justify-between mb-2 w-[350px]'>
-            <h2 className='font-bold text-base'>{truncateText(item.v_core_name)}</h2>
-            <h3 className='ml-3 py-2 px-4 rounded-md bg-maple-darkblue text-maple-lightblue'>{item.slot_level}</h3>
-            <div className='absolute top-[-70px] right-[-15px] p-4 bg-white border border-gray-300 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
-              <p>{item.v_core_name}</p>
+          <div key={index} className='flex items-center justify-between mb-2 w-[350px]'>
+            <div className='group relative'>
+              <h2 className='font-bold text-base'>{truncateText(item.v_core_name)}</h2>
+              <div className='absolute p-1 text-[10px] w-[300px] bg-white border border-gray-300 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+                <p>{item.v_core_name}</p>
+              </div>
             </div>
+            <h3 className='ml-3 py-2 px-4 rounded-md bg-maple-darkblue text-maple-lightblue'>{item.slot_level}</h3>
           </div>
         ))}
       </div>
