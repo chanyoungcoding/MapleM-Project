@@ -1,5 +1,14 @@
 
-const MapleAbility = () => {
+interface CharacterStat {
+  stat_name: string;
+  stat_value: string;
+}
+
+interface MapleAbilityProps {
+  stats: CharacterStat[] | null;
+}
+
+const MapleAbility:React.FC<MapleAbilityProps> = ({stats}) => {
 
   return (
     <div className="relative w-[300px] bg-white p-5 border-4 border-maple-sky rounded-lg z-50">
@@ -7,36 +16,36 @@ const MapleAbility = () => {
       
       <div className="flex items-center justify-between">
         <div>
-          <p>물리 공격력</p>
-          <p>232323</p>
+          <p>{stats && stats[1].stat_name}</p>
+          <p>{stats && stats[1].stat_value}</p>
         </div>
-        <div>
-          <p>마법 공격력</p>
-          <p>232323</p>
+        <div className="w-[100px]">
+          <p>{stats && stats[2].stat_name}</p>
+          <p>{stats && stats[2].stat_value}</p>
         </div>
       </div>
       
       <div className="w-[100%] mt-5 mb-5 h-0.5 bg-black"></div>
 
-      <div className="flex items-center justify-between pr-[15px] pb-4">
+      <div className="flex items-center justify-between  pb-4">
         <div>
-          <p>물리 방어력</p>
-          <p>232323</p>
+          <p>{stats && stats[3].stat_name}</p>
+          <p>{stats && stats[3].stat_value}</p>
         </div>
-        <div>
-          <p>HP</p>
-          <p>232323</p>
+        <div className="w-[100px]">
+          <p>{stats && stats[5].stat_name}</p>
+          <p>{stats && stats[5].stat_value}</p>
         </div>
       </div>
 
-      <div className="flex items-center justify-between pr-[15px]">
+      <div className="flex items-center justify-between ">
         <div>
-          <p>물리 방어력</p>
-          <p>232323</p>
+          <p>{stats && stats[4].stat_name}</p>
+          <p>{stats && stats[4].stat_value}</p>
         </div>
-        <div>
-          <p>MP</p>
-          <p>232323</p>
+        <div className="w-[100px]">
+          <p>{stats && stats[6].stat_name}</p>
+          <p>{stats && stats[6].stat_value}</p>
         </div>
       </div>
 

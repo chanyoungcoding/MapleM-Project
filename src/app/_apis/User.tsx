@@ -23,3 +23,15 @@ export const getUserstatData = async (id: string) => {
   })
   return res.data
 }
+
+export const getUserVMetrixData = async (id: string) => {
+  const res = await axios.get("https://open.api.nexon.com/maplestorym/v1/character/vmatrix", {
+    params: {
+      ocid: id
+    },
+    headers: {
+      'x-nxopen-api-key': process.env.NEXT_PUBLIC_MAPLE_M_API_KEY
+    }
+  })
+  return res.data
+}

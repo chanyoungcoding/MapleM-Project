@@ -1,12 +1,10 @@
 "use client"
 
-import Image from "next/image"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import MapleAbility from "@/app/_components/maple-ability"
-import MapleSimpleAbility from "@/app/_components/maple-simple-ability"
 import MapleVMatrix from "@/app/_components/maple-vmetrix"
-import { getUserBasicData, getUserstatData } from "@/app/_apis/User"
+import { getUserBasicData, getUserstatData, getUserVMetrixData } from "@/app/_apis/User"
 import MapleUserCard from "@/app/_components/maple-userCard"
 
 interface UserData {
@@ -21,12 +19,25 @@ interface CharacterStat {
   stat_value: string;
 }
 
+interface VCoreEquipment {
+  slot_id: string;
+  slot_level: number;
+  v_core_name: string;
+  v_core_level: number;
+}
+
+interface VMetrixData {
+  character_class: string;
+  character_v_core_equipment: VCoreEquipment[];
+}
+
 const page = () => {
 
   const router = useRouter();
-  
+
   const [userBasic, setBasicUser] = useState<UserData | null>(null);
   const [userStat, setUserStat] = useState<CharacterStat[] | null>(null);
+  const [userVMetrix, setUserVMetrix] = useState<VMetrixData | null>(null);
 
   useEffect(() => {
     const getData = async () => {
@@ -40,8 +51,11 @@ const page = () => {
       try {
         const basicUser = await getUserBasicData(userId);
         const statUser = await getUserstatData(userId);
+        const vMetrixUser = await getUserVMetrixData(userId);
+
         setBasicUser(basicUser);
         setUserStat(statUser.stat);
+        setUserVMetrix(vMetrixUser);
       } catch(e) {
         console.error(e);
         alert("데이터를 가져오는 중 오류가 발생했습니다.");
@@ -67,8 +81,8 @@ const page = () => {
 
       <div className="relative flex justify-center flex-wrap gap-5 py-24 bg-ability-background-image bg-cover bg-center">
         <div className="absolute inset-0 bg-black opacity-60"></div>
-        <MapleAbility/>
-        <MapleVMatrix/>
+        <MapleAbility stats={userStat}/>
+        <MapleVMatrix VMetrix={userVMetrix}/>
       </div>
 
     </div>
