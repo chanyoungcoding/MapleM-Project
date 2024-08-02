@@ -1,34 +1,66 @@
 "use client"
-import Image from "next/image"
 
+import Image from "next/image"
+import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import MapleAbility from "@/app/_components/maple-ability"
 import MapleSimpleAbility from "@/app/_components/maple-simple-ability"
 import MapleVMatrix from "@/app/_components/maple-vmetrix"
-import { useEffect } from "react"
+import { getUserBasicData, getUserstatData } from "@/app/_apis/User"
+import MapleUserCard from "@/app/_components/maple-userCard"
+
+interface UserData {
+  character_date_last_login: string;
+  character_job_name: string;
+  character_level: string;
+  character_name: string;
+}
+
+interface CharacterStat {
+  stat_name: string;
+  stat_value: string;
+}
 
 const page = () => {
 
+  const router = useRouter();
+  
+  const [userBasic, setBasicUser] = useState<UserData | null>(null);
+  const [userStat, setUserStat] = useState<CharacterStat[] | null>(null);
+
   useEffect(() => {
-    const userId = sessionStorage.getItem("ocid");
-    console.log(userId)
+    const getData = async () => {
+      const userId = sessionStorage.getItem("ocid");
+
+      if(!userId) {
+        alert("캐릭터 명을 정확히 입력해 주세요.")
+        return router.push('/')
+      }
+
+      try {
+        const basicUser = await getUserBasicData(userId);
+        const statUser = await getUserstatData(userId);
+        setBasicUser(basicUser);
+        setUserStat(statUser.stat);
+      } catch(e) {
+        console.error(e);
+        alert("데이터를 가져오는 중 오류가 발생했습니다.");
+      }
+    }
+
+    getData();
+
   },[])
 
   return (
     <div>
       <div className="bg-detail-image bg-cover bg-center py-[140px]">
-        <div className="relative w-[450px] m-auto bg-character-background-image bg-cover bg-center rounded-xl shadow-custom">
-          <div className="absolute inset-0 bg-black opacity-60 rounded-xl"></div>
-          
-          <div className="flex flex-col items-center relative z-50">
-            <p className="mt-12 text-white text-2xl">세영공듀</p>
-            <Image src="/maple-character.png" alt="캐릭터 이미지" priority width={150} height={150} layout="fixed"/>
-            <p className="text-white">Lv. 181</p>
-
-            <MapleSimpleAbility work="다크나이트" ability="323232"/>
-
-            <p className="m-6 text-maple-gray">마지막 활동일: 07-05</p>
-          </div>
-        </div>
+        <MapleUserCard 
+          name={userBasic?.character_name} 
+          level={userBasic?.character_level} 
+          job_name={userBasic?.character_job_name} 
+          power={userStat && userStat[0].stat_value}
+        />
       </div>
 
       <div className="h-7 bg-white shadow-custom"></div>

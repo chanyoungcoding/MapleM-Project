@@ -32,6 +32,7 @@ const MapleSearch = () => {
         const data = res.data;
         sessionStorage.setItem("ocid", data.ocid)
         router.push(`/detail`)
+        
       } catch(e) {
         console.log(e)
       }

@@ -1,8 +1,8 @@
 import React from "react";
 
 interface MapleSimpleAbilityData {
-  work: string;
-  ability: string;
+  work: string | undefined;
+  ability: string | null;
 }
 
 const MapleSimpleAbility:React.FC<MapleSimpleAbilityData> = ({work, ability}) => {
