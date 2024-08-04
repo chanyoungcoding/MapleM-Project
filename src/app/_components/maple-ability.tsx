@@ -18,7 +18,9 @@ const MapleAbility:React.FC<MapleAbilityProps> = ({stats}) => {
         <div>
           <p>{stats && stats[1].stat_name}</p>
           <p>{stats && stats[1].stat_value}</p>
+          
         </div>
+
         <div className="w-[100px]">
           <p>{stats && stats[2].stat_name}</p>
           <p>{stats && stats[2].stat_value}</p>
@@ -27,11 +29,12 @@ const MapleAbility:React.FC<MapleAbilityProps> = ({stats}) => {
       
       <div className="w-[100%] mt-5 mb-5 h-0.5 bg-black"></div>
 
-      <div className="flex items-center justify-between  pb-4">
+      <div className="flex items-center justify-between">
         <div>
           <p>{stats && stats[3].stat_name}</p>
           <p>{stats && stats[3].stat_value}</p>
         </div>
+
         <div className="w-[100px]">
           <p>{stats && stats[5].stat_name}</p>
           <p>{stats && stats[5].stat_value}</p>
