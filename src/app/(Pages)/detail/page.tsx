@@ -77,8 +77,6 @@ const page = () => {
         />
       </div>
 
-      <div className="h-7 bg-white shadow-custom"></div>
-
       <div className="relative flex justify-center flex-wrap gap-5 py-24 bg-ability-background-image bg-cover bg-center">
         <div className="absolute inset-0 bg-black opacity-60"></div>
         <MapleAbility stats={userStat}/>
