@@ -16,6 +16,10 @@ const fetchDataFromServer = (value: string) => {
   const users = [
 		{name: "홍길동"},
 		{name: "박찬영"},
+		{name: "박찬영"},
+		{name: "박찬영"},
+		{name: "박찬영"},
+		{name: "박찬영"},
 		{name: "김세영"},
 	]
 
@@ -66,23 +70,29 @@ const MapleSearch = () => {
   }, [debouncedInput])
 
   return (
-    <div className="relative flex items-center justify-center py-52 z-20">
-      <Image src="/maplepet.png" alt="title" priority width={75} height={75} layout="fixed"/>
+    <>
+      <div className="relative flex items-center justify-center pt-52 z-20">
+        <Image src="/maplepet.png" alt="title" priority width={75} height={75} layout="fixed"/>
 
-      <input 
-        type="text" 
-        value={name}
-        onChange={onChangeName}
-        onKeyDown={onKeyPress}
-        placeholder="캐릭터 명을 입력하세요." 
-        className="p-4 rounded-md bg-maple-dark border-maple-green border-2 w-96 text-white"
-      />
+        <div className="relative border-maple-green border-2 rounded-md">
+          <input 
+            type="text" 
+            value={name}
+            onChange={onChangeName}
+            onKeyDown={onKeyPress}
+            placeholder="캐릭터 명을 입력하세요." 
+            className="p-4 rounded-md bg-maple-dark w-96 text-white outline-none"
+          />
+          <div className={`absolute top-[52px] left-[-2px] bg-maple-dark text-white border-maple-green ${result ? "border-2" : "border-0"} border-t-0 rounded-b-lg`}>
+            {result && result.map((item, index) => (
+              <p key={index} className="p-3 w-96 m-auto">{item.name}</p>
+            ))}
+          </div>
+        </div>
 
-      {result && result.map((item, index) => (
-        <p key={index}>{item.name}</p>
-      ))}
+      </div>
 
-    </div>
+    </>
   )
 }
 
