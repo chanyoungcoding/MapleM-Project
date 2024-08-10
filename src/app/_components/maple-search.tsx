@@ -74,6 +74,13 @@ const MapleSearch = () => {
       <div className="relative flex items-center justify-center pt-52 z-20">
         <Image src="/maplepet.png" alt="title" priority width={75} height={75} layout="fixed"/>
 
+        <select id="custom-select" className="absolute top-[170px] ml-[-110px] w-[200px] px-2 py-2 text-[#9BA3AF] bg-maple-dark border-maple-green border-2 rounded-md shadow-sm focus:outline-none sm:text-sm">
+          <option>서버를 선택하세요.</option>
+          <option>스카니아</option>
+          <option>크로아</option>
+          <option>루나</option>
+        </select>
+
         <div className="relative border-maple-green border-2 rounded-md">
           <input 
             type="text" 
@@ -83,6 +90,7 @@ const MapleSearch = () => {
             placeholder="캐릭터 명을 입력하세요." 
             className="p-4 rounded-md bg-maple-dark w-96 text-white outline-none"
           />
+
           <div className={`absolute top-[52px] left-[-2px] bg-maple-dark text-white border-maple-green ${result ? "border-2" : "border-0"} border-t-0 rounded-b-lg`}>
             {result && result.map((item, index) => (
               <p key={index} className="p-3 w-96 m-auto">{item.name}</p>
