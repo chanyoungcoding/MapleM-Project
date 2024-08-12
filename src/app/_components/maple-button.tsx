@@ -1,12 +1,16 @@
 import React from 'react'
 
 interface ButtonData {
-  children: React.ReactNode
+  click: () => void;
+  children: React.ReactNode;
 }
 
-const MapleButton:React.FC<ButtonData> = ({children}) => {
+const MapleButton:React.FC<ButtonData> = ({click, children}) => {
+
+  const onClick = () => click();
+  
   return (
-    <button className='mx-1 p-2 text-white font-bold rounded-md bg-maple-dark border-none'>{children}</button>
+    <button onClick={onClick} className='mx-1 p-2 text-white font-bold rounded-md bg-maple-dark border-none'>{children}</button>
   )
 }
 
