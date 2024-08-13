@@ -1,3 +1,6 @@
+"use client";
+
+import { useRouter } from "next/navigation"
 import React from 'react'
 
 interface Notice {
@@ -9,8 +12,11 @@ interface Notice {
 
 const MapleNoticeDetail:React.FC<Notice> = ({title, url, notice_id, date}) => {
 
+  const path = useRouter();
+
   const onClickUrl = () => {
-    window.open(url, '_blank');
+    path.push(`/noticedetail/${notice_id}`)
+    // window.open(url, '_blank');
   }
 
   const formatDate = (dateString: string): string => {
