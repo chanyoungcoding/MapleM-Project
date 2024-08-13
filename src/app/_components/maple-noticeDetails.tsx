@@ -8,27 +8,27 @@ interface Notice {
   url: string;
   notice_id: number;
   date: string;
+  main_title: string;
 }
 
-const MapleNoticeDetail:React.FC<Notice> = ({title, url, notice_id, date}) => {
+const MapleNoticeDetail:React.FC<Notice> = ({title, url, notice_id, date, main_title}) => {
 
   const path = useRouter();
 
   const onClickUrl = () => {
-    path.push(`/noticedetail/${notice_id}`)
-    // window.open(url, '_blank');
+    path.push(`/noticedetail/${notice_id}?mainTitle=${main_title}`)
   }
 
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
-    const month = date.getMonth() + 1; // 월은 0부터 시작하므로 1을 더해줌
+    const month = date.getMonth() + 1;
     const day = date.getDate();
     return `${month}월 ${day}일`;
   };
 
   return (
-    <div className='flex justify-between p-5 items-center border-b-[1px] border-gray-300'>
-      <p onClick={onClickUrl} className='cursor-pointer'>{title}</p>
+    <div onClick={onClickUrl} className='flex justify-between p-5 items-center border-b-[1px] border-gray-300'>
+      <p  className='cursor-pointer'>{title}</p>
       <p>{formatDate(date)}</p>
     </div>
   )

@@ -23,6 +23,7 @@ interface Notice {
 const MapleNoticeBox = () => {
 
   const [notice, setNotice] = useState<Notice[] | null>(null);
+  const [title, setTitle] = useState("공지사항");
 
   useEffect(() => {
     onNoticeClick();
@@ -32,6 +33,7 @@ const MapleNoticeBox = () => {
     try {
       const data = await getNotice();
       setNotice(data.notice);
+      setTitle("공지사항")
     } catch(e) {
       console.error(e)
     }
@@ -41,6 +43,7 @@ const MapleNoticeBox = () => {
     try {
       const data = await getNoticePatch();
       setNotice(data.patch_notice);
+      setTitle("패치노트")
     } catch(e) {
       console.error(e)
     }
@@ -50,6 +53,7 @@ const MapleNoticeBox = () => {
     try {
       const data = await getNoticeEvent();
       setNotice(data.event_notice);
+      setTitle("이벤트")
     } catch(e) {
       console.error(e)
     }
@@ -69,12 +73,14 @@ const MapleNoticeBox = () => {
       <div className="bg-[#F0F3F5] h-5"></div>
 
       <div className="pb-6">
-        {notice && notice.map(item => (
+        {notice && notice.map((item, index) => (
           <MapleNoticeDetail 
+            key={index}
             title={item.title}
             url={item.url}
             notice_id={item.notice_id}
             date={item.date}
+            main_title={title}
           />
         ))}
       </div>
