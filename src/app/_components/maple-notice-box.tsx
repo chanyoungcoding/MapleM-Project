@@ -5,11 +5,8 @@ import MapleButton from './maple-button'
 import MapleNoticeDetail from './maple-noticeDetails'
 import { 
   getNotice, 
-  getNoticeDetail, 
   getNoticeEvent, 
-  getNoticeEventDetail, 
   getNoticePatch, 
-  getNoticePatchDetail 
 } from '../_apis/notification'
 
 interface Notice {
@@ -26,36 +23,39 @@ const MapleNoticeBox = () => {
   const [title, setTitle] = useState("공지사항");
 
   useEffect(() => {
-    onNoticeClick();
+    onPatchData("공지사항");
   }, [])
 
-  const onNoticeClick = async () => {
+  const onPatchData = async (value: string) => {
     try {
-      const data = await getNotice();
-      setNotice(data.notice);
-      setTitle("공지사항")
-    } catch(e) {
-      console.error(e)
-    }
-  }
+      let data;
+      let title;
 
-  const onPatchClick = async () => {
-    try {
-      const data = await getNoticePatch();
-      setNotice(data.patch_notice);
-      setTitle("패치노트")
-    } catch(e) {
-      console.error(e)
-    }
-  }
+      switch(value) {
+        case "공지사항":
+          data = await getNotice();
+          title = "공지사항";
+          break;
+        
+        case "패치노트":
+          data = await getNoticePatch();
+          title = "공지사항";
+          break;
 
-  const onEventClick = async () => {
-    try {
-      const data = await getNoticeEvent();
-      setNotice(data.event_notice);
-      setTitle("이벤트")
+        case "이벤트":
+          data = await getNoticeEvent();
+          title = "이벤트";
+          break;
+        
+        default:
+          throw new Error("Invalid value");
+      }
+
+      setNotice(data.notice || data.patch_notice || data.event_notice);
+      setTitle(title);
+
     } catch(e) {
-      console.error(e)
+      console.error(e);
     }
   }
 
@@ -65,9 +65,9 @@ const MapleNoticeBox = () => {
       <p className="pb-6 border-b-2 border-gray-300 p-6">공지 정보</p>
 
       <div className="p-4">
-        <MapleButton click={onNoticeClick}>공지사항</MapleButton>
-        <MapleButton click={onPatchClick}>패치노트</MapleButton>
-        <MapleButton click={onEventClick}>진행 중인 이벤트</MapleButton>
+        <MapleButton click={() => onPatchData("공지사항")}>공지사항</MapleButton>
+        <MapleButton click={() => onPatchData("패치노트")}>패치노트</MapleButton>
+        <MapleButton click={() => onPatchData("이벤트")}>진행 중인 이벤트</MapleButton>
       </div>
 
       <div className="bg-[#F0F3F5] h-5"></div>
