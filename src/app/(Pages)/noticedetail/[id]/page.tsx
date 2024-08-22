@@ -21,7 +21,8 @@ interface detailData {
 };
 
 const page:React.FC<PageProps> = (props) => {
-  
+
+
   const [noticeDetail, setNoticeDetail] = useState<detailData | null>(null);
 
   const id = parseInt(props.params.id);
