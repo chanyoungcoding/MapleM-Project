@@ -37,6 +37,8 @@ const MapleSearch = () => {
   const [result, setResult] = useState<User[] | null>([]);
   const debouncedInput = useDebounce(name, 1000);
 
+  console.log(server)
+
   const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     const mapleName = e.target.value;
     setName(mapleName)
@@ -50,8 +52,8 @@ const MapleSearch = () => {
       try {
         const res = await axios.get("https://open.api.nexon.com/maplestorym/v1/id", {
           params: {
-            character_name: "악마",
-            world_name: "스카니아"
+            character_name: name,
+            world_name: server
           },
           headers: {
             'x-nxopen-api-key': process.env.NEXT_PUBLIC_MAPLE_M_API_KEY
@@ -78,7 +80,7 @@ const MapleSearch = () => {
       <div className="relative flex items-center justify-center pt-52 z-20">
         <Image src="/maplepet.png" alt="title" priority width={75} height={75} layout="fixed"/>
 
-        <select onChange={onSelectServer} id="custom-select" className="absolute top-[170px] ml-[-110px] w-[200px] px-2 py-2 text-[#9BA3AF] bg-maple-dark border-maple-green border-2 rounded-md shadow-sm focus:outline-none sm:text-sm">
+        <select onChange={onSelectServer} value={server} id="custom-select" className="absolute top-[170px] ml-[-110px] w-[200px] px-2 py-2 text-[#9BA3AF] bg-maple-dark border-maple-green border-2 rounded-md shadow-sm focus:outline-none sm:text-sm">
           <option>서버를 선택하세요.</option>
           <option>스카니아</option>
           <option>크로아</option>
