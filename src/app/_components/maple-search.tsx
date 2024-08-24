@@ -33,6 +33,7 @@ const MapleSearch = () => {
   const router = useRouter();
 
   const [name, setName] = useState("");
+  const [server, setServer] = useState("");
   const [result, setResult] = useState<User[] | null>([]);
   const debouncedInput = useDebounce(name, 1000);
 
@@ -41,6 +42,9 @@ const MapleSearch = () => {
     setName(mapleName)
   }
 
+  const onSelectServer = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setServer(e.target.value);
+  }
   const onKeyPress = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if(e.key === "Enter") {
       try {
@@ -74,7 +78,7 @@ const MapleSearch = () => {
       <div className="relative flex items-center justify-center pt-52 z-20">
         <Image src="/maplepet.png" alt="title" priority width={75} height={75} layout="fixed"/>
 
-        <select id="custom-select" className="absolute top-[170px] ml-[-110px] w-[200px] px-2 py-2 text-[#9BA3AF] bg-maple-dark border-maple-green border-2 rounded-md shadow-sm focus:outline-none sm:text-sm">
+        <select onChange={onSelectServer} id="custom-select" className="absolute top-[170px] ml-[-110px] w-[200px] px-2 py-2 text-[#9BA3AF] bg-maple-dark border-maple-green border-2 rounded-md shadow-sm focus:outline-none sm:text-sm">
           <option>서버를 선택하세요.</option>
           <option>스카니아</option>
           <option>크로아</option>
