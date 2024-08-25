@@ -1,23 +1,23 @@
 import React from 'react'
 
 interface MapleAbilityDetailProps {
-  a: string | null;
-  b: string | null;
-  c: string | null;
-  d: string | null;
+  leftName: string | null;
+  leftValue: string | null;
+  rightName: string | null;
+  rightValue: string | null;
 }
 
-const MapleAbilityDetail:React.FC<MapleAbilityDetailProps> = ({a,b,c,d}) => {
+const MapleAbilityDetail:React.FC<MapleAbilityDetailProps> = ({leftName,leftValue,rightName,rightValue}) => {
   return (
     <div className="flex items-center justify-between">
       <div>
-        <p>{a}</p>
-        <p>{b}</p>
+        <p>{leftName}</p>
+        <p>{leftValue}</p>
       </div>
 
       <div className="w-[100px]">
-        <p>{c}</p>
-        <p>{d}</p>
+        <p>{rightName}</p>
+        <p>{rightValue}</p>
       </div>
     </div>
   )

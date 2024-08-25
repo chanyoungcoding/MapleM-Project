@@ -24,26 +24,26 @@ const MapleAbility:React.FC<MapleAbilityProps> = ({stats}) => {
       <h1 className=" pb-5 font-bold text-xl text-maple-sky">스탯</h1>
 
       <MapleAbilityDetail 
-        a={statProps(1, "name")}
-        b={statProps(1, "value")}
-        c={statProps(2, "name")}
-        d={statProps(2, "value")}
+        leftName={statProps(1, "name")}
+        leftValue={statProps(1, "value")}
+        rightName={statProps(2, "name")}
+        rightValue={statProps(2, "value")}
       />
       
       <div className="w-[100%] mt-5 mb-5 h-0.5 bg-black"></div>
       
       <MapleAbilityDetail 
-        a={statProps(3, "name")}
-        b={statProps(3, "value")}
-        c={statProps(5, "name")}
-        d={statProps(5, "value")}
+        leftName={statProps(3, "name")}
+        leftValue={statProps(3, "value")}
+        rightName={statProps(5, "name")}
+        rightValue={statProps(5, "value")}
       />
 
       <MapleAbilityDetail 
-        a={statProps(4, "name")}
-        b={statProps(4, "value")}
-        c={statProps(6, "name")}
-        d={statProps(6, "value")}
+        leftName={statProps(4, "name")}
+        leftValue={statProps(4, "value")}
+        rightName={statProps(6, "name")}
+        rightValue={statProps(6, "value")}
       />
 
     </div>
