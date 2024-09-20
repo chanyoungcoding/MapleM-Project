@@ -12,6 +12,7 @@ interface UserData {
   character_job_name: string;
   character_level: string;
   character_name: string;
+  character_date_last_logout: string;
 }
 
 interface CharacterStat {
@@ -73,6 +74,7 @@ const page = () => {
           name={userBasic?.character_name} 
           level={userBasic?.character_level} 
           job_name={userBasic?.character_job_name} 
+          logout={userBasic?.character_date_last_logout}
           power={userStat && userStat[0].stat_value}
         />
       </div>

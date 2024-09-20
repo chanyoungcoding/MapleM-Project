@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useMemo } from 'react'
 import MapleSimpleAbility from './maple-simple-ability'
 
 interface MapleUserCardData {
@@ -7,9 +7,21 @@ interface MapleUserCardData {
   level: string | undefined;
   job_name: string | undefined;
   power: string | null;
+  logout: string | undefined;
 }
 
-const MapleUserCard:React.FC<MapleUserCardData> = ({name, level, job_name, power}) => {
+const MapleUserCard:React.FC<MapleUserCardData> = ({name, level, job_name, power, logout}) => {
+
+  const formatDate = useMemo(() => {
+    if(!logout) return "정보가 없습니다."
+
+    const date = new Date(logout);
+    const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+    const day = String(date.getUTCDate()).padStart(2, "0"); 
+  
+    return `${month}-${day}`;
+  }, [logout])
+
   return (
     <div className="relative w-[450px] m-auto bg-character-background-image bg-cover bg-center rounded-xl shadow-custom">
       <div className="absolute inset-0 bg-black opacity-60 rounded-xl"></div>
@@ -21,7 +33,7 @@ const MapleUserCard:React.FC<MapleUserCardData> = ({name, level, job_name, power
 
         <MapleSimpleAbility work={job_name} ability={power}/>
 
-        <p className="m-6 text-maple-gray">마지막 활동일: 07-05</p>
+        <p className="m-6 text-maple-gray">마지막 활동일: {formatDate}</p>
       </div>
     </div>
   )

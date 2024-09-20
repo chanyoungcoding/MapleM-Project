@@ -8,6 +8,7 @@ interface MapleAbilityDetailProps {
 }
 
 const MapleAbilityDetail:React.FC<MapleAbilityDetailProps> = ({leftName,leftValue,rightName,rightValue}) => {
+
   return (
     <div className="flex items-center justify-between">
       <div>
