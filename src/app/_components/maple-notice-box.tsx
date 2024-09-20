@@ -39,7 +39,7 @@ const MapleNoticeBox = () => {
         
         case "패치노트":
           data = await getNoticePatch();
-          title = "공지사항";
+          title = "패치노트";
           break;
 
         case "이벤트":
@@ -48,7 +48,7 @@ const MapleNoticeBox = () => {
           break;
         
         default:
-          throw new Error("Invalid value");
+          throw new Error("유효하지 않은 값 입니다.");
       }
 
       setNotice(data.notice || data.patch_notice || data.event_notice);

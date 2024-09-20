@@ -1,16 +1,11 @@
 "use client"
 
-import axios from "axios"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 
 import useDebounce from "../_hooks/debounce"
 import { getUserData } from "../_apis/User"
-
-interface User {
-  name: string;
-}
 
 const fetchDataFromServer = (value: string): string[] | null => {
 
@@ -86,6 +81,10 @@ const MapleSearch = () => {
           <option>스카니아</option>
           <option>크로아</option>
           <option>루나</option>
+          <option>제니스</option>
+          <option>유니온</option>
+          <option>엘리시움</option>
+          <option>아케인</option>
         </select>
 
         <div className="relative border-maple-green border-2 rounded-md">
