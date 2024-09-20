@@ -64,6 +64,28 @@ const MapleSearch = () => {
       }
     }
   };
+
+  const onClick = async (item:string) => {
+      try {
+        // 검색어 저장
+        const searchHistory = JSON.parse(localStorage.getItem("searchHistory") || "[]");
+  
+        if (!searchHistory.includes(name)) {
+          searchHistory.push(name);
+          localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+        }
+  
+        // 서버로 검색 요청
+        const data = await getUserData(item, server);
+        
+        sessionStorage.setItem("ocid", data.ocid);
+        router.push(`/detail`);
+      } catch (e: any) {
+        // 에러 발생 시 alert로 사용자에게 알림
+        alert(e.message || "유저를 찾을 수 없습니다.");
+        console.log(e);
+      }
+  };
   
 
   useEffect(() => {
@@ -99,7 +121,7 @@ const MapleSearch = () => {
 
           <div className={`absolute top-[52px] left-[-2px] bg-maple-dark text-white border-maple-green ${result ? "border-2" : "border-0"} border-t-0 rounded-b-lg`}>
             {result && result.map((item, index) => (
-              <p key={index} className="p-3 w-96 m-auto">{item}</p>
+              <p onClick={() => onClick(item)} key={index} className="p-3 w-96 m-auto cursor-pointer">{item}</p>
             ))}
           </div>
         </div>
