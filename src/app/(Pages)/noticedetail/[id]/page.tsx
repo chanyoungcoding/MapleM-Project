@@ -59,7 +59,7 @@ const page:React.FC<PageProps> = (props) => {
   }
 
   return (
-    <div className='max-w-[650px] m-auto pt-[80px]'>
+    <div className='max-w-[650px] m-auto pt-[80px] pb-[80px]'>
       {noticeDetail && (
         <div dangerouslySetInnerHTML={{ __html: unescapedContents(noticeDetail.contents) }} />
       )}

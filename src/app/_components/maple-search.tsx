@@ -6,79 +6,80 @@ import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 
 import useDebounce from "../_hooks/debounce"
+import { getUserData } from "../_apis/User"
 
 interface User {
   name: string;
 }
 
-const fetchDataFromServer = (value: string) => {
+const fetchDataFromServer = (value: string): string[] | null => {
 
-  const users = [
-		{name: "홍길동"},
-		{name: "박찬영"},
-		{name: "박찬영"},
-		{name: "박찬영"},
-		{name: "박찬영"},
-		{name: "박찬영"},
-		{name: "김세영"},
-	]
+  if (!value) return null;
 
-  if(!value) return null;
+  // localStorage에서 저장된 검색어 목록 불러오기
+  const savedSearches = localStorage.getItem("searchHistory");
+  const searchHistory: string[] = savedSearches ? JSON.parse(savedSearches) as string[]: [];
 
-  return users.filter(user => user.name.startsWith(value))
+  // 입력값으로 필터링
+  const filteredResults = searchHistory.filter((search: string) => search.startsWith(value));
+
+  // 중복 제거 후 결과 반환
+  const uniqueResults = Array.from(new Set(filteredResults));
+
+  return uniqueResults;
 };
 
 const MapleSearch = () => {
-
   const router = useRouter();
 
   const [name, setName] = useState("");
   const [server, setServer] = useState("");
-  const [result, setResult] = useState<User[] | null>([]);
+  const [result, setResult] = useState<string[] | null>([]);
   const debouncedInput = useDebounce(name, 1000);
-
-  console.log(server)
 
   const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     const mapleName = e.target.value;
-    setName(mapleName)
-  }
+    setName(mapleName);
+  };
 
   const onSelectServer = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setServer(e.target.value);
-  }
-  const onKeyPress = async (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if(e.key === "Enter") {
-      try {
-        const res = await axios.get("https://open.api.nexon.com/maplestorym/v1/id", {
-          params: {
-            character_name: name,
-            world_name: server
-          },
-          headers: {
-            'x-nxopen-api-key': process.env.NEXT_PUBLIC_MAPLE_M_API_KEY
-          }
-        })
+  };
 
-        const data = res.data;
-        sessionStorage.setItem("ocid", data.ocid)
-        router.push(`/detail`)
+  const onKeyPress = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      try {
+        // 검색어 저장
+        const searchHistory = JSON.parse(localStorage.getItem("searchHistory") || "[]");
+  
+        if (!searchHistory.includes(name)) {
+          searchHistory.push(name);
+          localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+        }
+  
+        // 서버로 검색 요청
+        const data = await getUserData(name, server);
         
-      } catch(e) {
-        console.log(e)
+        sessionStorage.setItem("ocid", data.ocid);
+        router.push(`/detail`);
+      } catch (e: any) {
+        // 에러 발생 시 alert로 사용자에게 알림
+        alert(e.message || "유저를 찾을 수 없습니다.");
+        console.log(e);
       }
     }
-  }
+  };
+  
 
   useEffect(() => {
     const users = fetchDataFromServer(debouncedInput);
     setResult(users);
-  }, [debouncedInput])
+  }, [debouncedInput]);
 
   return (
     <>
       <div className="relative flex items-center justify-center pt-52 z-20">
-        <Image src="/maplepet.png" alt="title" priority width={75} height={75} layout="fixed"/>
+        <Image src="/maplepet.png" alt="title" priority width={75} height={75} layout="fixed" />
 
         <select onChange={onSelectServer} value={server} id="custom-select" className="absolute top-[170px] ml-[-110px] w-[200px] px-2 py-2 text-[#9BA3AF] bg-maple-dark border-maple-green border-2 rounded-md shadow-sm focus:outline-none sm:text-sm">
           <option>서버를 선택하세요.</option>
@@ -99,15 +100,13 @@ const MapleSearch = () => {
 
           <div className={`absolute top-[52px] left-[-2px] bg-maple-dark text-white border-maple-green ${result ? "border-2" : "border-0"} border-t-0 rounded-b-lg`}>
             {result && result.map((item, index) => (
-              <p key={index} className="p-3 w-96 m-auto">{item.name}</p>
+              <p key={index} className="p-3 w-96 m-auto">{item}</p>
             ))}
           </div>
         </div>
-
       </div>
-
     </>
   )
-}
+};
 
-export default MapleSearch
+export default MapleSearch;
