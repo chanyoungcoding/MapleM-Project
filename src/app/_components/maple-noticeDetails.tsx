@@ -5,13 +5,12 @@ import React from 'react'
 
 interface Notice {
   title: string;
-  url: string;
   notice_id: number;
   date: string;
   main_title: string;
 }
 
-const MapleNoticeDetail:React.FC<Notice> = ({title, url, notice_id, date, main_title}) => {
+const MapleNoticeDetail:React.FC<Notice> = ({title, notice_id, date, main_title}) => {
 
   const path = useRouter();
 
