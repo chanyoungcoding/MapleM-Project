@@ -121,7 +121,7 @@ const MapleSearch = () => {
 
           <div className={`absolute top-[52px] left-[-2px] bg-maple-dark text-white border-maple-green ${result ? "border-2" : "border-0"} border-t-0 rounded-b-lg`}>
             {result && result.map((item, index) => (
-              <p onClick={() => onClick(item)} key={index} className="p-3 w-96 m-auto cursor-pointer">{item}</p>
+              <p onClick={() => onClick(item)} key={index} className="sm:w-96 p-3 w-60 m-auto cursor-pointer">{item}</p>
             ))}
           </div>
         </div>

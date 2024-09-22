@@ -62,7 +62,7 @@ const MapleNoticeBox = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-custom">
+    <div className="bg-white rounded-2xl shadow-custom relative z-10">
       <p className="pb-6 border-b-2 border-gray-300 p-6">공지 정보</p>
 
       <div className="p-4">

@@ -23,7 +23,15 @@ const MapleUserCard:React.FC<MapleUserCardData> = ({name, level, job_name, power
   }, [logout])
 
   return (
-    <div className="sm:w-[450px] w-[350px] relative m-auto bg-character-background-image bg-cover bg-center rounded-xl shadow-custom">
+    <div className="sm:w-[450px] w-[350px] relative m-auto rounded-xl shadow-custom">
+      <Image 
+        src="/background_3.png"
+        alt="배경 이미지"
+        layout="fill" 
+        objectFit="cover" 
+        sizes="(max-width: 640px) 100vw, (max-width: 768px) 75vw, 50vw"
+        priority
+      />
       <div className="absolute inset-0 bg-black opacity-60 rounded-xl"></div>
       
       <div className="flex flex-col items-center relative z-50">

@@ -6,6 +6,7 @@ import MapleAbility from "@/app/_components/maple-ability"
 import MapleVMatrix from "@/app/_components/maple-vmetrix"
 import { getUserBasicData, getUserstatData, getUserVMetrixData } from "@/app/_apis/User"
 import MapleUserCard from "@/app/_components/maple-userCard"
+import Image from "next/image"
 
 interface UserData {
   character_date_last_login: string;
@@ -69,7 +70,15 @@ const page = () => {
 
   return (
     <div>
-      <div className="bg-detail-image bg-cover bg-center py-[140px]">
+      <div className="relative py-[140px]">
+        <Image 
+          src="/background_1.png"
+          alt="배경 이미지"
+          layout="fill" 
+          objectFit="cover" 
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 75vw, 50vw"
+          priority
+        />
         <MapleUserCard 
           name={userBasic?.character_name} 
           level={userBasic?.character_level} 
@@ -79,7 +88,14 @@ const page = () => {
         />
       </div>
 
-      <div className="relative flex justify-center flex-wrap gap-5 py-24 bg-ability-background-image bg-cover bg-center">
+      <div className="relative flex justify-center flex-wrap gap-5 py-24">
+        <Image 
+          src="/background_4.png"
+          alt="배경 이미지"
+          layout="fill" 
+          objectFit="cover" 
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 75vw, 50vw"
+        />
         <div className="absolute inset-0 bg-black opacity-60"></div>
         <MapleAbility stats={userStat}/>
         <MapleVMatrix VMetrix={userVMetrix}/>
