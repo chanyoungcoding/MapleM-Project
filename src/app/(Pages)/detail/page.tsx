@@ -6,6 +6,7 @@ import MapleAbility from "@/app/_components/maple-ability"
 import MapleVMatrix from "@/app/_components/maple-vmetrix"
 import { getUserBasicData, getUserstatData, getUserVMetrixData } from "@/app/_apis/User"
 import MapleUserCard from "@/app/_components/maple-userCard"
+import { Metadata } from "next"
 
 interface UserData {
   character_date_last_login: string;

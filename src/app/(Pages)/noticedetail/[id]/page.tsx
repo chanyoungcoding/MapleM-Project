@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { getNoticeDetail, getNoticeEventDetail, getNoticePatchDetail } from '@/app/_apis/notification';
+import { Metadata } from 'next';
 
 interface PageProps {
   params: {

@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { commonMetadata } from "./metadata";
+
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "MapleM",
-  description: "Maple M information check site",
+  ...commonMetadata,
+  title: 'MapleM Info',
+  icons: {
+    icon: '/maplepet.png',
+  },
 };
 
 export default function RootLayout({
