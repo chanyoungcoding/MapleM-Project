@@ -11,7 +11,7 @@ export default function Home() {
         <MapleSearch/>
       </div>
 
-      <div className="bg-maple-gray relative rounded-2xl top-[-100px] m-8 p-5 shadow-custom">
+      <div className="sm:m-8 mt-9 bg-maple-gray relative rounded-2xl top-[-100px] p-5 shadow-custom">
         <MapleNoticeBox/>
       </div>
     </>

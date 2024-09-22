@@ -29,7 +29,7 @@ const MapleNoticeDetail:React.FC<Notice> = ({title, url, notice_id, date, main_t
   return (
     <div onClick={onClickUrl} className='flex justify-between p-5 items-center border-b-[1px] border-gray-300'>
       <p  className='cursor-pointer'>{title}</p>
-      <p>{formatDate(date)}</p>
+      <p className="sm:pl-0 pl-3">{formatDate(date)}</p>
     </div>
   )
 }

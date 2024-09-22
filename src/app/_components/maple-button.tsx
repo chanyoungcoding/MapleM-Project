@@ -10,7 +10,7 @@ const MapleButton:React.FC<ButtonData> = ({click, children}) => {
   const onClick = () => click();
   
   return (
-    <button onClick={onClick} className='mx-1 p-2 text-white font-bold rounded-md bg-maple-dark border-none'>{children}</button>
+    <button onClick={onClick} className='sm:text-[16px] sm:mx-1 text-[13px] mx-[2px] p-2 text-white font-bold rounded-md bg-maple-dark border-none'>{children}</button>
   )
 }
 

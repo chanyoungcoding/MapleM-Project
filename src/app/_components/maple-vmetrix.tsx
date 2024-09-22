@@ -27,13 +27,13 @@ const MapleVMatrix:React.FC<MapleVMatrixData> = ({VMetrix}) => {
 
 
   return (
-    <div className='relative z-50 bg-white p-5 border-maple-purple border-4 rounded-lg w-[500px]'>
+    <div className='sm:w-[400px] w-[360px] relative z-50 bg-white p-5 border-maple-purple border-4 rounded-lg'>
 
       <h1 className='pb-5 font-bold text-xl text-maple-purple'>5차 스킬</h1>
 
       <div>
         {VMetrix?.character_v_core_equipment.map((item,index) => (
-          <div key={index} className='flex items-center justify-between mb-2 w-[350px]'>
+          <div key={index} className='sm:w-[350px] w-[320px] flex items-center justify-between mb-2'>
             <div className='group relative'>
               <h2 className='font-bold text-base'>{truncateText(item.v_core_name)}</h2>
               <div className='absolute p-1 text-[10px] w-[300px] bg-white border border-gray-300 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
