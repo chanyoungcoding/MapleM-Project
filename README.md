@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# 📖 Maple M Info
+![image](https://github.com/user-attachments/assets/7a9bea24-2f68-4bd2-b1b1-89bada5adf31)
 
-First, run the development server:
+<br>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🎬 프로젝트 사이트
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<p>Maple M Info 를 직접 경험하고 싶다면 아래 링크를 클릭해 주세요.</p>
+<a href="https://maple-m-project-bxfx7o8wc-chanyoungcodings-projects.vercel.app/">Maple M Info</a>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 프로젝트 소개
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Maple M Info 는 메이플 M 을 이용하시는 사용자에게 간단하게 공지 사항, 캐릭터 정보를 확인하실 수 있는 사이트 입니다.
+- 다양한 디바이스에서 손쉽게 확인할 수 있게 반응형으로 만들었습니다.
+- 캐릭터의 상세 정보를 확인하고 전투력까지 확인하실 수 있습니다.
+- 이미지를 최적화 해 사용자 경험을 높이고 불필요한 번들을 줄여 접근성을 높였습니다.
 
-## Learn More
+## 프로젝트 구성
+![image](https://github.com/user-attachments/assets/455d33c0-58dd-4480-9948-227fe51fa0bd)
 
-To learn more about Next.js, take a look at the following resources:
+![image](https://github.com/user-attachments/assets/10122703-9bb5-406b-bba4-905067cb67c5)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 🔨 개발
+<br>
 
-## Deploy on Vercel
+![image](https://github.com/user-attachments/assets/cda0cc41-a172-444a-ab26-1f50ed3ec6ed)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![image](https://github.com/user-attachments/assets/8620c7d9-1fb4-406f-a614-8878409f4104)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+<br>
+<br>
+<br>
+<br>
+<br>
